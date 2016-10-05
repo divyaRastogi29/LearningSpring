@@ -1,5 +1,6 @@
 /home/divya/SpringProjects/Spittr/src/main/java/com/divya/config/RootConfig.java
 /home/divya/SpringProjects/Spittr/src/main/java/com/divya/config/SpittrWebAppInitializer.java
+/home/divya/SpringProjects/Spittr/src/main/java/com/divya/dao/HibernateDaoImpl.java
 /home/divya/SpringProjects/Spittr/src/main/java/com/divya/data/SpittleRepository.java
 /home/divya/SpringProjects/Spittr/src/main/java/com/divya/dao/SpittrDao.java
 /home/divya/SpringProjects/Spittr/src/main/java/com/divya/controller/HomeController.java

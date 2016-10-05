@@ -1,8 +1,6 @@
 package com.divya.dao;
 
 
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,7 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class HibernateDaoImpl {
 
-    @Autowired
+   /* @Autowired
     private SessionFactory sessionFactory ;
 
     public SessionFactory getSessionFactory() {
@@ -21,7 +19,7 @@ public class HibernateDaoImpl {
 
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
-    }
+    }*/
 
 
    /* public int getCount(){

@@ -5,10 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-
-import java.util.Properties;
 
 /**
  * Created by divya on 28/9/16.
@@ -27,7 +24,7 @@ public class RootConfig {
         return dataSource;
     }
 
-    @Bean
+   /* @Bean
     public AnnotationSessionFactoryBean getSessionFactory(DriverManagerDataSource dataSource){
         AnnotationSessionFactoryBean annotationSessionFactoryBean = new AnnotationSessionFactoryBean();
         annotationSessionFactoryBean.setDataSource(dataSource);
@@ -36,6 +33,6 @@ public class RootConfig {
         properties.setProperty("dialect", "org.hibernate.dialect.MySQLDialect");
         annotationSessionFactoryBean.setHibernateProperties(properties);
         return annotationSessionFactoryBean ;
-    }
+    }*/
 
 }
