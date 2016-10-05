@@ -5,7 +5,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+import java.util.Properties;
 
 /**
  * Created by divya on 28/9/16.
@@ -22,6 +25,17 @@ public class RootConfig {
         dataSource.setUsername("root");
         dataSource.setPassword("root");
         return dataSource;
+    }
+
+    @Bean
+    public AnnotationSessionFactoryBean getSessionFactory(DriverManagerDataSource dataSource){
+        AnnotationSessionFactoryBean annotationSessionFactoryBean = new AnnotationSessionFactoryBean();
+        annotationSessionFactoryBean.setDataSource(dataSource);
+        annotationSessionFactoryBean.setPackagesToScan("com.divya");
+        Properties properties = new Properties();
+        properties.setProperty("dialect", "org.hibernate.dialect.MySQLDialect");
+        annotationSessionFactoryBean.setHibernateProperties(properties);
+        return annotationSessionFactoryBean ;
     }
 
 }
