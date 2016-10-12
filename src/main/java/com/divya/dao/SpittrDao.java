@@ -12,4 +12,6 @@ public interface SpittrDao {
     public Spittle getSpittle(long id);
     public int getCount();
     public int addSpittle(Spittle spittle);
+    /*public int addSpittr(Spitter spitter);
+    public Spitter findByUsername(String username);*/
 }

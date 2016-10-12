@@ -2,6 +2,8 @@ package com.divya.controller;
 
 import com.divya.data.SpittleRepository;
 import com.divya.model.Spittle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,8 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class SpittleController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String spittles(@RequestParam(value = "max",defaultValue = "999999999") long max,
-                                  @RequestParam(value = "count", defaultValue = "20") int count, Model model){
+                           @RequestParam(value = "count", defaultValue = "20") int count, Model model){
         LOG.info("\nRequest comes to GET spittles");
         List<Spittle> spittles = spittleRepository.findSpittles(max , count);
         model.addAttribute("spittleList", spittles);
@@ -65,5 +65,26 @@ public class SpittleController {
         model.addAttribute("message",message);
         return "default";
     }
+
+    @RequestMapping(value = "/register" , method = RequestMethod.GET)
+    public String showRegistrationForm(){
+        return "registerForm" ;
+    }
+
+    /*@RequestMapping(value = "/register" , method = RequestMethod.POST)
+    public String processRegistration(@Validated Spitter spitter , Errors errors) {
+
+        if(errors.hasErrors())
+            return "registerForm" ;
+        spittleRepository.saveSpittr(spitter);
+        return "redirect:/spittles/"+ spitter.getUserName();
+    }
+
+    @RequestMapping(value = "/{username}" , method = RequestMethod.GET)
+    public String showSpitterProfile(@PathVariable String username , Model model){
+        Spitter spitter = spittleRepository.findByUserName(username);
+        model.addAttribute("spitter" , spitter) ;
+        return "profile" ;
+    }*/
 
 }

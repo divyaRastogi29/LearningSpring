@@ -5,7 +5,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+import java.util.Properties;
 
 /**
  * Created by divya on 28/9/16.
@@ -24,15 +27,18 @@ public class RootConfig {
         return dataSource;
     }
 
-   /* @Bean
-    public AnnotationSessionFactoryBean getSessionFactory(DriverManagerDataSource dataSource){
-        AnnotationSessionFactoryBean annotationSessionFactoryBean = new AnnotationSessionFactoryBean();
-        annotationSessionFactoryBean.setDataSource(dataSource);
-        annotationSessionFactoryBean.setPackagesToScan("com.divya");
+    @Bean
+    public LocalSessionFactoryBean getSessionFactoryBean(DriverManagerDataSource dataSource){
+        LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
+        localSessionFactoryBean.setDataSource(dataSource);
+        localSessionFactoryBean.setPackagesToScan("com.divya");
         Properties properties = new Properties();
         properties.setProperty("dialect", "org.hibernate.dialect.MySQLDialect");
-        annotationSessionFactoryBean.setHibernateProperties(properties);
-        return annotationSessionFactoryBean ;
-    }*/
+        properties.setProperty("show_sql","true");
+        properties.setProperty("hibernate.hbm2ddl.auto","update");
+        localSessionFactoryBean.setHibernateProperties(properties);
+        localSessionFactoryBean.setAnnotatedClasses(com.divya.model.Spitter.class);
+        return localSessionFactoryBean ;
+    }
 
 }

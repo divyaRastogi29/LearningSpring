@@ -13,4 +13,6 @@ public interface SpittleRepository {
     Spittle findOne(long id);
     int spittleCount();
     int addSpittle(String message);
+    /*int saveSpittr(Spitter spitter);
+    Spitter findByUserName(String username);*/
 }

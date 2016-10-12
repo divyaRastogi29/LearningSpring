@@ -1,4 +1,6 @@
 com/divya/config/SpittrWebAppInitializer.class
+com/divya/model/Spitter.class
+com/divya/controller/SpitterController.class
 com/divya/dao/SpittrDaoImpl$1.class
 com/divya/controller/SpittleController.class
 com/divya/data/SpittleRepository.class
