@@ -16,7 +16,7 @@
 
 <h1>Registration Form</h1>
 
-<form method="post">
+<form method="post" action="addSpitter">
     First Name   :  <input type="text" name="firstName"/> <br/><br/>
     Last Name  :  <input type="text" name="lastName"/> <br/><br/>
     Username :  <input type="text" name="username"/> <br/><br/>

@@ -66,11 +66,6 @@ public class SpittleController {
         return "default";
     }
 
-    @RequestMapping(value = "/register" , method = RequestMethod.GET)
-    public String showRegistrationForm(){
-        return "registerForm" ;
-    }
-
     /*@RequestMapping(value = "/register" , method = RequestMethod.POST)
     public String processRegistration(@Validated Spitter spitter , Errors errors) {
 

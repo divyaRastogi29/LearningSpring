@@ -9,7 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by divya on 9/10/16.
@@ -27,13 +28,19 @@ public class SpitterController {
         this.hibernateDao = hibernateDao ;
     }
 
-    @RequestMapping(value="/addSpitter" , method = RequestMethod.GET)
-    public String addSpitter(@RequestParam(value="firstName") String firstName , Model model){
+    @RequestMapping(value = "/register" , method = RequestMethod.GET)
+    public String showRegistrationForm(){
+        return "registerForm" ;
+    }
+
+    @RequestMapping(value="/addSpitter" , method = RequestMethod.POST)
+    public String addSpitter(HttpServletRequest request, Model model){
         LOG.info("\nRequest comes for adding Spitter");
         Spitter spitter = new Spitter();
-        spitter.setFirstName(firstName);
-        spitter.setLastName("Rastogi");
-        spitter.setUserName(firstName.substring(0,4));
+        spitter.setFirstName(request.getParameter("firstName"));
+        spitter.setLastName(request.getParameter("lastName"));
+        spitter.setUserName(request.getParameter("username"));
+        spitter.setPassword(request.getParameter("password"));
         hibernateDao.saveSpittr(spitter);
         LOG.info("\nSpitter added : "+spitter);
         model.addAttribute("message","Spitter added to table");
